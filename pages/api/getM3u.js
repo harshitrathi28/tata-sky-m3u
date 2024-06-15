@@ -140,9 +140,9 @@ const getUserChanDetails = async (userChannels) => {
 
     while (chanIds.length > 0) {
         chanIdsStr = chanIds.splice(0, 99).join(',');
-        await fetch("https://tm.tapi.videoready.tv/content-detail/pub/api/v1/live-tv-genre/channels?genre=&language=&channelIds=" + chanIdsStr, requestOptions)
+        await fetch("https://ts-more-api.videoready.tv/content-detail/pub/api/v2/channels/" + chanIdsStr, requestOptions)
             .then(response => response.json())
-            .then(cData => result.push(...cData.data.liveChannels))
+            .then(cData => result.push(cData.data))
             .catch(error => {
                 console.log('error: ', error);
                 err = error;
